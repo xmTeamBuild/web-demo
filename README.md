@@ -1,8 +1,8 @@
-# iviewhaoge
+# 厦门团队建设使用前端框架
 
 > iview for vue webapp
 
-#后端应用接口源码路径：https://github.com/xiezhengsu/managesys_java
+#后端应用接口源码路径：https://github.com/xmTeamBuild/microserviceDemo
 
 ## Build Setup
 
@@ -19,5 +19,3 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
