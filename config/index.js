@@ -29,7 +29,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://localhost:8080/sysmanage/',
+        target: 'http://121.196.18.208:8002/sysmanage/',
+        // target: 'http://localhost:8080/sysmanage/',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
