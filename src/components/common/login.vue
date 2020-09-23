@@ -73,64 +73,64 @@
 <script>
 
 export default {
-    data() {
-        return {
-            formInline: {
-                username: '',
-                password: '',
-            },
-            ruleInline: {
-                username: [{
-                    required: true,
-                    message: '请填写用户名',
-                    trigger: 'blur'
-                }],
-                password: [{
-                    required: true,
-                    message: '请填写密码',
-                    trigger: 'blur'
-                }, {
-                    type: 'string',
-                    min: 2,
-                    message: '密码长度不能小于6位',
-                    trigger: 'blur'
-                }]
-            },
-            modal_loading: false
-        }
-    },
-    methods: {
-        handleSubmit(name) {
-            const self = this
-            self.modal_loading = true
-            self.$refs[name].validate((valid) => {
-                if (valid) {
-                  this.$http({
-                        url: '/login/loginValidate',
-                        data:{'staffName': self.formInline.username},
-                        method: 'POST'
-                    }).then((req) => {
-                        if (req.data.success) {
-                            localStorage.setItem('ms_username',self.formInline.username)
-                            self.$router.push('/index')
-                        }else{
-                            this.$Message.error(req.data.data)
-                            self.modal_loading = false
-                        }
-                    }).catch((req) => {
-                        this.$Message.error(req.status)
-                    })
-                } else {
-                    localStorage.setItem('ms_username','')
-                    this.$Message.error('用户名和密码请填写完整!')
-                    self.modal_loading = false
-                }
-            })
-        },
-        handleReset(val) {
-            console.log(val)
-        }
+  data () {
+    return {
+      formInline: {
+        username: '',
+        password: ''
+      },
+      ruleInline: {
+        username: [{
+          required: true,
+          message: '请填写用户名',
+          trigger: 'blur'
+        }],
+        password: [{
+          required: true,
+          message: '请填写密码',
+          trigger: 'blur'
+        }, {
+          type: 'string',
+          min: 2,
+          message: '密码长度不能小于6位',
+          trigger: 'blur'
+        }]
+      },
+      modal_loading: false
     }
+  },
+  methods: {
+    handleSubmit (name) {
+      const self = this
+      self.modal_loading = true
+      self.$refs[name].validate((valid) => {
+        if (valid) {
+          this.$http({
+            url: '/login/loginValidate',
+            data: {'staffName': self.formInline.username},
+            method: 'POST'
+          }).then((req) => {
+            if (req.data.success) {
+              localStorage.setItem('ms_username', self.formInline.username)
+              self.$router.push('/index')
+            } else {
+              this.$Message.error(req.data.data)
+              self.modal_loading = false
+            }
+          }).catch((req) => {
+            this.$Message.error(req.status)
+          })
+        } else {
+          localStorage.setItem('ms_username', '')
+          this.$Message.error('用户名和密码请填写完整!')
+          self.modal_loading = false
+        }
+      })
+    },
+    handleReset (val) {
+      console.log(val)
+    }
+  }
 }
 
 </script>
